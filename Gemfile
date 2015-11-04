@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -52,6 +52,6 @@ group :production do
   # enables serving assets in production and setting your logger to standard
   # out, both of which are required to run a Rails 4 application
   # on Heroku
-  
+
   gem 'rails_12factor'
 end
