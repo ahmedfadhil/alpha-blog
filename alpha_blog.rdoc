@@ -1,0 +1,6 @@
+*1. new app alpha_blog
+*2. make sure page displays after starting server
+*3. create pages controller
+*4. make sure we have appropriate routes
+*5. create a home page and about page and link them to each other 
+6. Incorporate page from HTML homework maintaining any themes
