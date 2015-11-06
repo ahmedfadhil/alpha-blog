@@ -1,6 +1,6 @@
 <% if @article.errors.any? %>
   <div id="error_explanation">
-    <h2>  
+    <h2>
       <%= pluralize(@article.errors.count, "error") %> prevented
       this article from being <%= @crud_action %>:
     </h2>
@@ -12,22 +12,39 @@
   </div>
 <% end %>
 
-<%= form_for @article do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+    <div class="form-group">
+      <div class="control-label col-xs-2">
+        <%= f.label :title %>
+      </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+      <div class="col-xs-8">
+        <%= f.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+      </div>
+    </div>
 
-<p>
-  <%= link_to 'Back to articles listing', articles_path %>
-</p>
+    <div class="form-group">
+      <div class="control-label col-xs-2">
+        <%= f.label :description %>
+      </div>
+
+      <div class="col-xs-8">
+        <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Body of article" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-2">
+         <%= f.submit class: "btn btn-primary btn-lg" %>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to 'Cancel request', articles_path, class: "btn btn-danger btn-lg" %>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>  <!-- end of col -->
+</div>    <!-- end of row -->
