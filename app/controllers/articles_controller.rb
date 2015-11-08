@@ -18,12 +18,12 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = User.first
-    
+
     if @article.save
       flash[:success] = "Article was successfully created"
       redirect_to article_path(@article)
     else
-      @crud_action = "created"
+      set_action_variables("created")
       render 'new'
     end
   end
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
       flash[:success] = "Article was successfully updated"
       redirect_to @article
     else
-      @crud_action = "updated"
+      set_action_variables("updated")
       render 'edit'
     end
   end
@@ -49,6 +49,11 @@ class ArticlesController < ApplicationController
   end
 
   private
+    def set_action_variables(crud)
+      @crud_action = crud
+      @narrative = "article"
+    end
+
     def set_article
       @article = Article.find(params[:id])
     end
