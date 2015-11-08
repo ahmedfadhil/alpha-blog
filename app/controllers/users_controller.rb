@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :update, :destroy]
 
-#   def index
-#     @user = User.all
-#   end
+  def index
+    @user = User.all
+  end
 
   def show
   end
@@ -37,15 +37,15 @@ class UsersController < ApplicationController
     end
   end
 
-#   def destroy
-#     if @user.destroy
-#       flash[:danger] = "Account was successfully deleted"
+  def destroy
+    if @user.destroy
+      flash[:danger] = "Account was successfully deleted"
 
-#       redirect_to articles_path
-#     else
-#       render 'show'
-#     end
-#   end
+      redirect_to articles_path
+    else
+      render 'show'
+    end
+  end
 
   private
   def set_action_variables(crud)
