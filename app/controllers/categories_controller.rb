@@ -14,6 +14,9 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def edit
+  end
+
   def create
     @category = Category.new(category_params)
     if @category.save
@@ -21,6 +24,16 @@ class CategoriesController < ApplicationController
       redirect_to categories_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    if @category.update(category_params)
+      flash[:success] = "Category name was successfully updated"
+      redirect_to category_path(@category)
+    else
+      set_action_variables("updated")
+      render 'edit'
     end
   end
 
